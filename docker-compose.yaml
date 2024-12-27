@@ -8,7 +8,7 @@ services:
     image: ${DOCKER_IMAGE_TAG}
     restart: always
     networks:
-      - paper-network
+      - park-network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.service-park.entrypoints=websecure"
@@ -21,6 +21,6 @@ services:
       - "8000:8000"
 
 networks:
-  paper-network:
+  park-network:
     driver: bridge
-    name: paper-network
+    name: park-network

@@ -20,7 +20,7 @@ type Comment struct {
 	Image      string    `orm:"column(image)" json:"image" description:"image"`
 	CreateTime time.Time `orm:"column(create_time)" json:"create_time"`
 	UpdateTime time.Time `orm:"column(update_time)" json:"update_time"`
-	User   *User `orm:"rel(fk);on_delete(cascade)" json:"user,omitempty"` // RelForeignKey relation
+	User       *User     `orm:"rel(fk);on_delete(cascade)" json:"user,omitempty"` // RelForeignKey relation
 }
 
 // type Comment struct {
@@ -46,7 +46,7 @@ func AddComment(m *Comment) (id int64, err error) {
 	o := orm.NewOrm()
 	// v := &Comment{Name: m.Name}
 	// if err = o.Read(v, "Name"); err == nil {
-	// 	return 0, errors.New("已经存在这个期刊")
+	// 	return 0, errors.New("已经存在这个用户")
 	// }
 	m.CreateTime = time.Now()
 	m.UpdateTime = time.Now()
@@ -256,7 +256,7 @@ func UpdateCommentByID(m *Comment) (err error) {
 			fmt.Println("Number of records updated in database:", num, err)
 		}
 
-		PushData(&Information{Type: 0, Data: m, Message: "推送期刊状态信息"})
+		PushData(&Information{Type: 0, Data: m, Message: "推送用户状态信息"})
 	}
 	return
 }

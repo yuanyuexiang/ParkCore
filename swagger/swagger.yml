@@ -10,11 +10,11 @@ paths:
     get:
       tags:
       - comment
-      summary: 查询期刊
+      summary: 查询评论
       description: |-
-        查询期刊 http://127.0.0.1:8080/park/v1/user
+        查询评论 http://127.0.0.1:8080/park/v1/user
         <br>
-      operationId: CommentController.查询期刊
+      operationId: CommentController.查询评论
       parameters:
       - in: query
         name: query
@@ -44,15 +44,15 @@ paths:
     post:
       tags:
       - comment
-      summary: 添加期刊
+      summary: 添加评论
       description: |-
-        添加期刊
+        添加评论
         <br>
       operationId: CommentController.Post
       parameters:
       - in: body
         name: body
-        description: 期刊结构体
+        description: 评论结构体
         required: true
         schema:
           $ref: '#/definitions/models.User'
@@ -64,11 +64,11 @@ paths:
     delete:
       tags:
       - comment
-      summary: 批量删除期刊
+      summary: 批量删除评论
       description: |-
         create User
         <br>
-      operationId: CommentController.批量删除期刊
+      operationId: CommentController.批量删除评论
       parameters:
       - in: body
         name: body
@@ -89,15 +89,15 @@ paths:
     get:
       tags:
       - comment
-      summary: 获取期刊
+      summary: 获取评论
       description: |-
-        获取期刊根据ID
+        获取评论根据ID
         <br>
       operationId: CommentController.Get
       parameters:
       - in: path
         name: id
-        description: 期刊ID
+        description: 评论ID
         required: true
         type: string
       responses:
@@ -108,20 +108,20 @@ paths:
     put:
       tags:
       - comment
-      summary: 更新期刊
+      summary: 更新评论
       description: |-
-        更新期刊
+        更新评论
         <br>
-      operationId: CommentController.更新期刊
+      operationId: CommentController.更新评论
       parameters:
       - in: path
         name: id
-        description: 期刊ID
+        description: 评论ID
         required: true
         type: string
       - in: body
         name: body
-        description: 期刊结构体内容
+        description: 评论结构体内容
         required: true
         schema:
           $ref: '#/definitions/models.User'
@@ -133,15 +133,15 @@ paths:
     delete:
       tags:
       - comment
-      summary: 删除期刊
+      summary: 删除评论
       description: |-
-        删除期刊
+        删除评论
         <br>
-      operationId: CommentController.删除期刊
+      operationId: CommentController.删除评论
       parameters:
       - in: path
         name: id
-        description: 删除期刊的ID
+        description: 删除评论的ID
         required: true
         type: string
       responses:
@@ -167,11 +167,11 @@ paths:
     get:
       tags:
       - user
-      summary: 查询期刊
+      summary: 查询用户
       description: |-
-        查询期刊 http://127.0.0.1:8080/park/v1/user
+        查询用户 http://127.0.0.1:8080/park/v1/user
         <br>
-      operationId: UserController.查询期刊
+      operationId: UserController.查询用户
       parameters:
       - in: query
         name: query
@@ -201,15 +201,15 @@ paths:
     post:
       tags:
       - user
-      summary: 添加期刊
+      summary: 添加用户
       description: |-
-        添加期刊
+        添加用户
         <br>
       operationId: UserController.Post
       parameters:
       - in: body
         name: body
-        description: 期刊结构体
+        description: 用户结构体
         required: true
         schema:
           $ref: '#/definitions/models.User'
@@ -221,11 +221,11 @@ paths:
     delete:
       tags:
       - user
-      summary: 批量删除期刊
+      summary: 批量删除用户
       description: |-
         create User
         <br>
-      operationId: UserController.批量删除期刊
+      operationId: UserController.批量删除用户
       parameters:
       - in: body
         name: body
@@ -246,15 +246,15 @@ paths:
     get:
       tags:
       - user
-      summary: 获取期刊
+      summary: 获取用户
       description: |-
-        获取期刊根据ID
+        获取用户根据ID
         <br>
       operationId: UserController.Get
       parameters:
       - in: path
         name: id
-        description: 期刊ID
+        description: 用户ID
         required: true
         type: string
       responses:
@@ -265,20 +265,20 @@ paths:
     put:
       tags:
       - user
-      summary: 更新期刊
+      summary: 更新用户
       description: |-
-        更新期刊
+        更新用户
         <br>
-      operationId: UserController.更新期刊
+      operationId: UserController.更新用户
       parameters:
       - in: path
         name: id
-        description: 期刊ID
+        description: 用户ID
         required: true
         type: string
       - in: body
         name: body
-        description: 期刊结构体内容
+        description: 用户结构体内容
         required: true
         schema:
           $ref: '#/definitions/models.User'
@@ -290,15 +290,15 @@ paths:
     delete:
       tags:
       - user
-      summary: 删除期刊
+      summary: 删除用户
       description: |-
-        删除期刊
+        删除用户
         <br>
-      operationId: UserController.删除期刊
+      operationId: UserController.删除用户
       parameters:
       - in: path
         name: id
-        description: 删除期刊的ID
+        description: 删除用户的ID
         required: true
         type: string
       responses:

@@ -13,9 +13,9 @@
                 "tags": [
                     "comment"
                 ],
-                "summary": "查询期刊",
-                "description": "查询期刊 http://127.0.0.1:8080/park/v1/user\n\u003cbr\u003e",
-                "operationId": "CommentController.查询期刊",
+                "summary": "查询评论",
+                "description": "查询评论 http://127.0.0.1:8080/park/v1/user\n\u003cbr\u003e",
+                "operationId": "CommentController.查询评论",
                 "parameters": [
                     {
                         "in": "query",
@@ -61,14 +61,14 @@
                 "tags": [
                     "comment"
                 ],
-                "summary": "添加期刊",
-                "description": "添加期刊\n\u003cbr\u003e",
+                "summary": "添加评论",
+                "description": "添加评论\n\u003cbr\u003e",
                 "operationId": "CommentController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "期刊结构体",
+                        "description": "评论结构体",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/models.User"
@@ -88,9 +88,9 @@
                 "tags": [
                     "comment"
                 ],
-                "summary": "批量删除期刊",
+                "summary": "批量删除评论",
                 "description": "create User\n\u003cbr\u003e",
-                "operationId": "CommentController.批量删除期刊",
+                "operationId": "CommentController.批量删除评论",
                 "parameters": [
                     {
                         "in": "body",
@@ -141,14 +141,14 @@
                 "tags": [
                     "comment"
                 ],
-                "summary": "获取期刊",
-                "description": "获取期刊根据ID\n\u003cbr\u003e",
+                "summary": "获取评论",
+                "description": "获取评论根据ID\n\u003cbr\u003e",
                 "operationId": "CommentController.Get",
                 "parameters": [
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "期刊ID",
+                        "description": "评论ID",
                         "required": true,
                         "type": "string"
                     }
@@ -166,21 +166,21 @@
                 "tags": [
                     "comment"
                 ],
-                "summary": "更新期刊",
-                "description": "更新期刊\n\u003cbr\u003e",
-                "operationId": "CommentController.更新期刊",
+                "summary": "更新评论",
+                "description": "更新评论\n\u003cbr\u003e",
+                "operationId": "CommentController.更新评论",
                 "parameters": [
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "期刊ID",
+                        "description": "评论ID",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "期刊结构体内容",
+                        "description": "评论结构体内容",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/models.User"
@@ -200,14 +200,14 @@
                 "tags": [
                     "comment"
                 ],
-                "summary": "删除期刊",
-                "description": "删除期刊\n\u003cbr\u003e",
-                "operationId": "CommentController.删除期刊",
+                "summary": "删除评论",
+                "description": "删除评论\n\u003cbr\u003e",
+                "operationId": "CommentController.删除评论",
                 "parameters": [
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "删除期刊的ID",
+                        "description": "删除评论的ID",
                         "required": true,
                         "type": "string"
                     }
@@ -227,9 +227,9 @@
                 "tags": [
                     "user"
                 ],
-                "summary": "查询期刊",
-                "description": "查询期刊 http://127.0.0.1:8080/park/v1/user\n\u003cbr\u003e",
-                "operationId": "UserController.查询期刊",
+                "summary": "查询用户",
+                "description": "查询用户 http://127.0.0.1:8080/park/v1/user\n\u003cbr\u003e",
+                "operationId": "UserController.查询用户",
                 "parameters": [
                     {
                         "in": "query",
@@ -275,14 +275,14 @@
                 "tags": [
                     "user"
                 ],
-                "summary": "添加期刊",
-                "description": "添加期刊\n\u003cbr\u003e",
+                "summary": "添加用户",
+                "description": "添加用户\n\u003cbr\u003e",
                 "operationId": "UserController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "期刊结构体",
+                        "description": "用户结构体",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/models.User"
@@ -302,9 +302,9 @@
                 "tags": [
                     "user"
                 ],
-                "summary": "批量删除期刊",
+                "summary": "批量删除用户",
                 "description": "create User\n\u003cbr\u003e",
-                "operationId": "UserController.批量删除期刊",
+                "operationId": "UserController.批量删除用户",
                 "parameters": [
                     {
                         "in": "body",
@@ -355,14 +355,14 @@
                 "tags": [
                     "user"
                 ],
-                "summary": "获取期刊",
-                "description": "获取期刊根据ID\n\u003cbr\u003e",
+                "summary": "获取用户",
+                "description": "获取用户根据ID\n\u003cbr\u003e",
                 "operationId": "UserController.Get",
                 "parameters": [
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "期刊ID",
+                        "description": "用户ID",
                         "required": true,
                         "type": "string"
                     }
@@ -380,21 +380,21 @@
                 "tags": [
                     "user"
                 ],
-                "summary": "更新期刊",
-                "description": "更新期刊\n\u003cbr\u003e",
-                "operationId": "UserController.更新期刊",
+                "summary": "更新用户",
+                "description": "更新用户\n\u003cbr\u003e",
+                "operationId": "UserController.更新用户",
                 "parameters": [
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "期刊ID",
+                        "description": "用户ID",
                         "required": true,
                         "type": "string"
                     },
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "期刊结构体内容",
+                        "description": "用户结构体内容",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/models.User"
@@ -414,14 +414,14 @@
                 "tags": [
                     "user"
                 ],
-                "summary": "删除期刊",
-                "description": "删除期刊\n\u003cbr\u003e",
-                "operationId": "UserController.删除期刊",
+                "summary": "删除用户",
+                "description": "删除用户\n\u003cbr\u003e",
+                "operationId": "UserController.删除用户",
                 "parameters": [
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "删除期刊的ID",
+                        "description": "删除用户的ID",
                         "required": true,
                         "type": "string"
                     }

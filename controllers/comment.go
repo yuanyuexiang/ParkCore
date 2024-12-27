@@ -14,9 +14,9 @@ type CommentController struct {
 
 // GetOne GetOne
 // @Title Get
-// @Summary 获取期刊
-// @Description 获取期刊根据ID
-// @Param	id		path 	string	true		"期刊ID"
+// @Summary 获取评论
+// @Description 获取评论根据ID
+// @Param	id		path 	string	true		"评论ID"
 // @Success 200 {object} controllers.ResponseUser
 // @router /:id [get]
 func (c *CommentController) GetOne() {
@@ -27,9 +27,9 @@ func (c *CommentController) GetOne() {
 }
 
 // GetAll GetAll
-// @Title 查询期刊
-// @Summary 查询期刊
-// @Description 查询期刊 http://127.0.0.1:8080/park/v1/user
+// @Title 查询评论
+// @Summary 查询评论
+// @Description 查询评论 http://127.0.0.1:8080/park/v1/user
 // @Param	query	query	string	false	"查询参数，用&分隔"
 // @Param	sortby	query	string	false	"排序"
 // @Param	order	query	string	false	"升序asc，降序desc"
@@ -84,9 +84,9 @@ func (c *CommentController) GetAll() {
 
 // Post Post
 // @Title Post
-// @Summary 添加期刊
-// @Description 添加期刊
-// @Param	body		body 	models.User	true		"期刊结构体"
+// @Summary 添加评论
+// @Description 添加评论
+// @Param	body		body 	models.User	true		"评论结构体"
 // @Success 200 {object} controllers.ResponseUser
 // @router / [post]
 func (c *CommentController) Post() {
@@ -97,11 +97,11 @@ func (c *CommentController) Post() {
 }
 
 // Put Put
-// @Title 更新期刊
-// @Summary 更新期刊
-// @Description 更新期刊
-// @Param	id		path 	string			true		"期刊ID"
-// @Param	body	body 	models.User	true		"期刊结构体内容"
+// @Title 更新评论
+// @Summary 更新评论
+// @Description 更新评论
+// @Param	id		path 	string			true		"评论ID"
+// @Param	body	body 	models.User	true		"评论结构体内容"
 // @Success 200 {object} controllers.ResponseData
 // @router /:id [put]
 func (c *CommentController) Put() {
@@ -115,8 +115,8 @@ func (c *CommentController) Put() {
 }
 
 // DeleteList DeleteList
-// @Title 批量删除期刊
-// @Summary 批量删除期刊
+// @Title 批量删除评论
+// @Summary 批量删除评论
 // @Description create User
 // @Param	body		body 	[]models.User	true		"只填id字段即可"
 // @Success 201 {object} controllers.ResponseData
@@ -132,10 +132,10 @@ func (c *CommentController) DeleteList() {
 }
 
 // Delete Delete
-// @Title 删除期刊
-// @Summary 删除期刊
-// @Description 删除期刊
-// @Param	id		path 	string	true		"删除期刊的ID"
+// @Title 删除评论
+// @Summary 删除评论
+// @Description 删除评论
+// @Param	id		path 	string	true		"删除评论的ID"
 // @Success 200 {object} controllers.ResponseData
 // @router /:id [delete]
 func (c *CommentController) Delete() {

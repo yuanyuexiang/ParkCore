@@ -10,19 +10,19 @@ import (
 	"github.com/beego/beego/v2/client/orm"
 )
 
-// 学术期刊
+// 学术用户
 // User User
 type User struct {
-	ID                  int64      `orm:"column(id);pk;auto" json:"id"`
-	Number              int64      `orm:"column(number)" json:"number"`
-	Name                string     `orm:"column(name)" json:"name"`
-	Tag                 string     `orm:"column(tag)" json:"tag"`
-	Content             string     `orm:"column(content)" json:"content"`
-	Status              int8       `orm:"column(status)" json:"status" description:"上线下线 0:离线 1:在线"`
-	Remarks             string     `orm:"column(remarks)" json:"remarks" description:"备注"`
-	CreateTime          time.Time  `orm:"column(create_time)" json:"create_time"`
-	UpdateTime          time.Time  `orm:"column(update_time)" json:"update_time"`
-	Comments            []*Comment `orm:"reverse(many)" json:"comments,omitempty" description:"值域数组"`
+	ID         int64      `orm:"column(id);pk;auto" json:"id"`
+	Number     int64      `orm:"column(number)" json:"number"`
+	Name       string     `orm:"column(name)" json:"name"`
+	Tag        string     `orm:"column(tag)" json:"tag"`
+	Content    string     `orm:"column(content)" json:"content"`
+	Status     int8       `orm:"column(status)" json:"status" description:"上线下线 0:离线 1:在线"`
+	Remarks    string     `orm:"column(remarks)" json:"remarks" description:"备注"`
+	CreateTime time.Time  `orm:"column(create_time)" json:"create_time"`
+	UpdateTime time.Time  `orm:"column(update_time)" json:"update_time"`
+	Comments   []*Comment `orm:"reverse(many)" json:"comments,omitempty" description:"值域数组"`
 }
 
 func init() {
@@ -44,7 +44,7 @@ func AddUser(m *User) (id int64, err error) {
 	o := orm.NewOrm()
 	v := &User{Name: m.Name}
 	if err = o.Read(v, "Name"); err == nil {
-		return 0, errors.New("已经存在这个期刊")
+		return 0, errors.New("已经存在这个用户")
 	}
 	m.CreateTime = time.Now()
 	m.UpdateTime = time.Now()
@@ -260,7 +260,7 @@ func UpdateUserByID(m *User) (err error) {
 			fmt.Println("Number of records updated in database:", num, err)
 		}
 
-		PushData(&Information{Type: 0, Data: m, Message: "推送期刊状态信息"})
+		PushData(&Information{Type: 0, Data: m, Message: "推送用户状态信息"})
 	}
 	return
 }
@@ -279,7 +279,7 @@ func UpdateUserStatusByNumber(m *User) (v User, err error) {
 			fmt.Println("Number of records updated in database:", num, err)
 		}
 	}
-	PushData(&Information{Type: 0, Data: v, Message: "推送期刊状态信息"})
+	PushData(&Information{Type: 0, Data: v, Message: "推送用户状态信息"})
 	return
 }
 

@@ -14,9 +14,9 @@ type UserController struct {
 
 // GetOne GetOne
 // @Title Get
-// @Summary 获取期刊
-// @Description 获取期刊根据ID
-// @Param	id		path 	string	true		"期刊ID"
+// @Summary 获取用户
+// @Description 获取用户根据ID
+// @Param	id		path 	string	true		"用户ID"
 // @Success 200 {object} controllers.ResponseUser
 // @router /:id [get]
 func (c *UserController) GetOne() {
@@ -27,9 +27,9 @@ func (c *UserController) GetOne() {
 }
 
 // GetAll GetAll
-// @Title 查询期刊
-// @Summary 查询期刊
-// @Description 查询期刊 http://127.0.0.1:8080/park/v1/user
+// @Title 查询用户
+// @Summary 查询用户
+// @Description 查询用户 http://127.0.0.1:8080/park/v1/user
 // @Param	query	query	string	false	"查询参数，用&分隔"
 // @Param	sortby	query	string	false	"排序"
 // @Param	order	query	string	false	"升序asc，降序desc"
@@ -84,9 +84,9 @@ func (c *UserController) GetAll() {
 
 // Post Post
 // @Title Post
-// @Summary 添加期刊
-// @Description 添加期刊
-// @Param	body		body 	models.User	true		"期刊结构体"
+// @Summary 添加用户
+// @Description 添加用户
+// @Param	body		body 	models.User	true		"用户结构体"
 // @Success 200 {object} controllers.ResponseUser
 // @router / [post]
 func (c *UserController) Post() {
@@ -97,11 +97,11 @@ func (c *UserController) Post() {
 }
 
 // Put Put
-// @Title 更新期刊
-// @Summary 更新期刊
-// @Description 更新期刊
-// @Param	id		path 	string			true		"期刊ID"
-// @Param	body	body 	models.User	true		"期刊结构体内容"
+// @Title 更新用户
+// @Summary 更新用户
+// @Description 更新用户
+// @Param	id		path 	string			true		"用户ID"
+// @Param	body	body 	models.User	true		"用户结构体内容"
 // @Success 200 {object} controllers.ResponseData
 // @router /:id [put]
 func (c *UserController) Put() {
@@ -115,8 +115,8 @@ func (c *UserController) Put() {
 }
 
 // DeleteList DeleteList
-// @Title 批量删除期刊
-// @Summary 批量删除期刊
+// @Title 批量删除用户
+// @Summary 批量删除用户
 // @Description create User
 // @Param	body		body 	[]models.User	true		"只填id字段即可"
 // @Success 201 {object} controllers.ResponseData
@@ -132,10 +132,10 @@ func (c *UserController) DeleteList() {
 }
 
 // Delete Delete
-// @Title 删除期刊
-// @Summary 删除期刊
-// @Description 删除期刊
-// @Param	id		path 	string	true		"删除期刊的ID"
+// @Title 删除用户
+// @Summary 删除用户
+// @Description 删除用户
+// @Param	id		path 	string	true		"删除用户的ID"
 // @Success 200 {object} controllers.ResponseData
 // @router /:id [delete]
 func (c *UserController) Delete() {

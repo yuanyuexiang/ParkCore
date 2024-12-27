@@ -59,6 +59,8 @@ jobs:
             Dockerfile
             park
             docker-compose.yaml
+            conf/
+            swagger/
 
   # 打包镜像
   build-package:

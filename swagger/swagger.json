@@ -1,0 +1,616 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "接口文档",
+        "description": "系统服务端接口文档，联系人袁跃祥，电话15077826106\n",
+        "version": "1.0.0",
+        "contact": {}
+    },
+    "basePath": "/park/v1",
+    "paths": {
+        "/comment/": {
+            "get": {
+                "tags": [
+                    "comment"
+                ],
+                "summary": "查询期刊",
+                "description": "查询期刊 http://127.0.0.1:8080/park/v1/user\n\u003cbr\u003e",
+                "operationId": "CommentController.查询期刊",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "查询参数，用\u0026分隔",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "排序",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "升序asc，降序desc",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "限制个数，默认10",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "偏移，默认0",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "comment"
+                ],
+                "summary": "添加期刊",
+                "description": "添加期刊\n\u003cbr\u003e",
+                "operationId": "CommentController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "期刊结构体",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseUser"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "comment"
+                ],
+                "summary": "批量删除期刊",
+                "description": "create User\n\u003cbr\u003e",
+                "operationId": "CommentController.批量删除期刊",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "只填id字段即可",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/comment/test": {
+            "get": {
+                "tags": [
+                    "comment"
+                ],
+                "summary": "测试",
+                "description": "测试\n\u003cbr\u003e",
+                "operationId": "CommentController.Get",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
+        "/comment/{id}": {
+            "get": {
+                "tags": [
+                    "comment"
+                ],
+                "summary": "获取期刊",
+                "description": "获取期刊根据ID\n\u003cbr\u003e",
+                "operationId": "CommentController.Get",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "期刊ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseUser"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "comment"
+                ],
+                "summary": "更新期刊",
+                "description": "更新期刊\n\u003cbr\u003e",
+                "operationId": "CommentController.更新期刊",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "期刊ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "期刊结构体内容",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "comment"
+                ],
+                "summary": "删除期刊",
+                "description": "删除期刊\n\u003cbr\u003e",
+                "operationId": "CommentController.删除期刊",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "删除期刊的ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "查询期刊",
+                "description": "查询期刊 http://127.0.0.1:8080/park/v1/user\n\u003cbr\u003e",
+                "operationId": "UserController.查询期刊",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "查询参数，用\u0026分隔",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "排序",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "升序asc，降序desc",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "限制个数，默认10",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "偏移，默认0",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "添加期刊",
+                "description": "添加期刊\n\u003cbr\u003e",
+                "operationId": "UserController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "期刊结构体",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseUser"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "批量删除期刊",
+                "description": "create User\n\u003cbr\u003e",
+                "operationId": "UserController.批量删除期刊",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "只填id字段即可",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/test": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "测试",
+                "description": "测试\n\u003cbr\u003e",
+                "operationId": "UserController.Get",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "获取期刊",
+                "description": "获取期刊根据ID\n\u003cbr\u003e",
+                "operationId": "UserController.Get",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "期刊ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseUser"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "更新期刊",
+                "description": "更新期刊\n\u003cbr\u003e",
+                "operationId": "UserController.更新期刊",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "期刊ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "期刊结构体内容",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "删除期刊",
+                "description": "删除期刊\n\u003cbr\u003e",
+                "operationId": "UserController.删除期刊",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "删除期刊的ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
+        "/websocket/information": {
+            "get": {
+                "tags": [
+                    "websocket"
+                ],
+                "summary": "数据",
+                "description": "通过websocket推送数据\n\u003cbr\u003e",
+                "operationId": "WebSocketController.Information",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Information"
+                        }
+                    }
+                }
+            }
+        },
+        "/websocket/logcat": {
+            "get": {
+                "tags": [
+                    "websocket"
+                ],
+                "summary": "日志",
+                "description": "通过websocket推送日志\n\u003cbr\u003e",
+                "operationId": "WebSocketController.Logcat",
+                "responses": {
+                    "200": {
+                        "description": "{string}"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "controllers.ResponseData": {
+            "title": "ResponseData",
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/controllers.interface",
+                    "description": "数据"
+                },
+                "message": {
+                    "description": "附加信息",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "状态 1:成功,-1:失败",
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "controllers.ResponseUser": {
+            "title": "ResponseUser",
+            "type": "object"
+        },
+        "controllers.interface": {
+            "title": "interface",
+            "type": "object"
+        },
+        "models.Comment": {
+            "title": "Comment",
+            "type": "object",
+            "properties": {
+                "content": {
+                    "description": "评论内容",
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "image": {
+                    "description": "image",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "用户名",
+                    "type": "string"
+                },
+                "score": {
+                    "description": "评分",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "user": {
+                    "$ref": "#/definitions/models.User",
+                    "description": "RelForeignKey relation"
+                }
+            }
+        },
+        "models.Information": {
+            "title": "Information",
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/models.interface"
+                },
+                "message": {
+                    "description": "信息",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "数据类型 0:设备 1:NFC 2:特征数据 3:原始震动 4:原始噪声 5:原始磁场",
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.User": {
+            "title": "User",
+            "type": "object",
+            "properties": {
+                "comments": {
+                    "description": "值域数组",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Comment"
+                    }
+                },
+                "content": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "remarks": {
+                    "description": "备注",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "上线下线 0:离线 1:在线",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                }
+            }
+        },
+        "models.interface": {
+            "title": "interface",
+            "type": "object"
+        }
+    },
+    "tags": [
+        {
+            "name": "websocket",
+            "description": "WebSocketController handles WebSocket requests.\n"
+        }
+    ]
+}

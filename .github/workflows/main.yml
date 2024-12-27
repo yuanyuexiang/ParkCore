@@ -111,8 +111,7 @@ jobs:
           file: ./Dockerfile
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          #tags: ${{ steps.meta.outputs.tags }}${{ needs.build-compile.outputs.formatted_timestamp }}
-          tags: ${{ vars.DOCKER_USERNAME }}/park:${{ needs.build-compile.outputs.formatted_timestamp }}
+          tags: registry.cn-zhangjiakou.aliyuncs.com/yuanyuexiang/park:${{ needs.build-compile.outputs.formatted_timestamp }}
           annotations: ${{ steps.meta.outputs.annotations }}
           provenance: true
           sbom: true
@@ -125,7 +124,7 @@ jobs:
     container:
       image: registry.cn-zhangjiakou.aliyuncs.com/matrix-net/docker:26.1.4-dind-alpine3.20
       env:
-        DOCKER_IMAGE_TAG: ${{ vars.DOCKER_USERNAME }}/park:${{ needs.build-compile.outputs.formatted_timestamp }}
+        DOCKER_IMAGE_TAG: registry.cn-zhangjiakou.aliyuncs.com/yuanyuexiang/park:${{ needs.build-compile.outputs.formatted_timestamp }}
       ports:
         - 22
     steps:

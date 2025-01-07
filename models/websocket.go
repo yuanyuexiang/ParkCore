@@ -2,8 +2,8 @@ package models
 
 import (
 	"encoding/json"
-	"park/utils"
 	"log"
+	"park/utils"
 
 	"github.com/gorilla/websocket"
 )
@@ -17,7 +17,7 @@ var (
 
 // Information Information
 type Information struct {
-	Type    int         `json:"type" description:"数据类型 0:设备 1:NFC 2:特征数据 3:原始震动 4:原始噪声 5:原始磁场"`
+	Type    int         `json:"type" description:"数据类型"`
 	Message string      `json:"message" description:"信息"`
 	Data    interface{} `json:"data,omitempty"`
 }

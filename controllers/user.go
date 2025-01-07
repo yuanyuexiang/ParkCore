@@ -17,7 +17,7 @@ type UserController struct {
 // @Summary 获取用户
 // @Description 获取用户根据ID
 // @Param	id		path 	string	true		"用户ID"
-// @Success 200 {object} controllers.ResponseUser
+// @Success 200 {object} controllers.ResponseData
 // @router /:id [get]
 func (c *UserController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
@@ -84,10 +84,10 @@ func (c *UserController) GetAll() {
 
 // Post Post
 // @Title Post
-// @Summary 添加用户
-// @Description 添加用户
+// @Summary 绑定用户
+// @Description 绑定用户
 // @Param	body		body 	models.User	true		"用户结构体"
-// @Success 200 {object} controllers.ResponseUser
+// @Success 200 {object} controllers.ResponseData
 // @router / [post]
 func (c *UserController) Post() {
 	var v models.User

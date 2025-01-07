@@ -17,7 +17,7 @@ type CommentController struct {
 // @Summary 获取评论
 // @Description 获取评论根据ID
 // @Param	id		path 	string	true		"评论ID"
-// @Success 200 {object} controllers.ResponseUser
+// @Success 200 {object} controllers.ResponseData
 // @router /:id [get]
 func (c *CommentController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
@@ -87,7 +87,7 @@ func (c *CommentController) GetAll() {
 // @Summary 添加评论
 // @Description 添加评论
 // @Param	body		body 	models.User	true		"评论结构体"
-// @Success 200 {object} controllers.ResponseUser
+// @Success 200 {object} controllers.ResponseData
 // @router / [post]
 func (c *CommentController) Post() {
 	var v models.Comment

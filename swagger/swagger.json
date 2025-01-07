@@ -79,7 +79,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/controllers.ResponseUser"
+                            "$ref": "#/definitions/controllers.ResponseData"
                         }
                     }
                 }
@@ -157,7 +157,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/controllers.ResponseUser"
+                            "$ref": "#/definitions/controllers.ResponseData"
                         }
                     }
                 }
@@ -275,8 +275,8 @@
                 "tags": [
                     "user"
                 ],
-                "summary": "添加用户",
-                "description": "添加用户\n\u003cbr\u003e",
+                "summary": "绑定用户",
+                "description": "绑定用户\n\u003cbr\u003e",
                 "operationId": "UserController.Post",
                 "parameters": [
                     {
@@ -293,7 +293,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/controllers.ResponseUser"
+                            "$ref": "#/definitions/controllers.ResponseData"
                         }
                     }
                 }
@@ -371,7 +371,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/controllers.ResponseUser"
+                            "$ref": "#/definitions/controllers.ResponseData"
                         }
                     }
                 }
@@ -490,10 +490,6 @@
                 }
             }
         },
-        "controllers.ResponseUser": {
-            "title": "ResponseUser",
-            "type": "object"
-        },
         "controllers.interface": {
             "title": "interface",
             "type": "object"
@@ -549,7 +545,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "数据类型 0:设备 1:NFC 2:特征数据 3:原始震动 4:原始噪声 5:原始磁场",
+                    "description": "数据类型",
                     "type": "integer",
                     "format": "int64"
                 }
@@ -559,28 +555,39 @@
             "title": "User",
             "type": "object",
             "properties": {
+                "address": {
+                    "description": "钱包地址",
+                    "type": "string"
+                },
                 "comments": {
-                    "description": "值域数组",
+                    "description": "此人言论数组",
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/models.Comment"
                     }
                 },
                 "content": {
+                    "description": "介绍",
                     "type": "string"
                 },
                 "create_time": {
                     "type": "string",
                     "format": "datetime"
                 },
+                "email": {
+                    "description": "邮件",
+                    "type": "string"
+                },
                 "id": {
                     "type": "integer",
                     "format": "int64"
                 },
                 "name": {
+                    "description": "名称昵称",
                     "type": "string"
                 },
                 "number": {
+                    "description": "号码",
                     "type": "integer",
                     "format": "int64"
                 },
@@ -592,9 +599,6 @@
                     "description": "上线下线 0:离线 1:在线",
                     "type": "integer",
                     "format": "int32"
-                },
-                "tag": {
-                    "type": "string"
                 },
                 "update_time": {
                     "type": "string",

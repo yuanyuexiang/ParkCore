@@ -117,7 +117,7 @@ func (c *UserController) Put() {
 // DeleteList DeleteList
 // @Title 批量删除用户
 // @Summary 批量删除用户
-// @Description create User
+// @Description 批量删除用户
 // @Param	body		body 	[]models.User	true		"只填id字段即可"
 // @Success 201 {object} controllers.ResponseData
 // @Failure 403 body is empty
@@ -148,7 +148,7 @@ func (c *UserController) Delete() {
 // GetTest GetTest
 // @Title Get
 // @Summary 测试
-// @Description 测试
+// @Description 测试接口，后端测试使用
 // @Success 200 {object} controllers.ResponseData
 // @router /test [get]
 func (c *UserController) GetTest() {

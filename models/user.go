@@ -14,9 +14,9 @@ import (
 // User User
 type User struct {
 	ID         int64      `orm:"column(id);pk;auto" json:"id"`
-	Number     int64      `orm:"column(number)" json:"number"`
 	Name       string     `orm:"column(name)" json:"name"`
-	Tag        string     `orm:"column(tag)" json:"tag"`
+	Email      string     `orm:"column(email)" json:"email"`
+	Number     int64      `orm:"column(number)" json:"number"`
 	Content    string     `orm:"column(content)" json:"content"`
 	Status     int8       `orm:"column(status)" json:"status" description:"上线下线 0:离线 1:在线"`
 	Remarks    string     `orm:"column(remarks)" json:"remarks" description:"备注"`
@@ -27,15 +27,6 @@ type User struct {
 
 func init() {
 	orm.RegisterModel(new(User))
-	// go func() {
-	// 	time.Sleep(1 * time.Second)
-	// 	if userList, err := GetAllUserList(nil, nil, nil, nil, 0, -1); err == nil {
-	// 		for _, v := range userList {
-	// 			v.Status = 0
-	// 			UpdateUserByID(&v)
-	// 		}
-	// 	}
-	// }()
 }
 
 // AddUser insert a new User into database and returns

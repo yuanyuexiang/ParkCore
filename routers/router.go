@@ -1,6 +1,6 @@
 // @APIVersion 1.0.0
 // @Title 接口文档
-// @Description 系统服务端接口文档，联系人袁跃祥，电话15077826106
+// @Description 系统服务端接口文档
 package routers
 
 import (

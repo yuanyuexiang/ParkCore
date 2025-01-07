@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "接口文档",
-        "description": "系统服务端接口文档，联系人袁跃祥，电话15077826106\n",
+        "description": "系统服务端接口文档\n",
         "version": "1.0.0",
         "contact": {}
     },
@@ -588,8 +588,7 @@
                 },
                 "number": {
                     "description": "号码",
-                    "type": "integer",
-                    "format": "int64"
+                    "type": "string"
                 },
                 "remarks": {
                     "description": "备注",

@@ -66,7 +66,7 @@ paths:
       - user
       summary: 批量删除用户
       description: |-
-        create User
+        批量删除用户
         <br>
       operationId: UserController.批量删除用户
       parameters:
@@ -155,7 +155,7 @@ paths:
       - user
       summary: 测试
       description: |-
-        测试
+        测试接口，后端测试使用
         <br>
       operationId: UserController.Get
       responses:

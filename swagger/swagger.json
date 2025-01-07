@@ -89,7 +89,7 @@
                     "user"
                 ],
                 "summary": "批量删除用户",
-                "description": "create User\n\u003cbr\u003e",
+                "description": "批量删除用户\n\u003cbr\u003e",
                 "operationId": "UserController.批量删除用户",
                 "parameters": [
                     {
@@ -124,7 +124,7 @@
                     "user"
                 ],
                 "summary": "测试",
-                "description": "测试\n\u003cbr\u003e",
+                "description": "测试接口，后端测试使用\n\u003cbr\u003e",
                 "operationId": "UserController.Get",
                 "responses": {
                     "200": {

@@ -17,7 +17,7 @@ type User struct {
 	Address    string     `orm:"column(address)" json:"address" description:"钱包地址"`
 	Name       string     `orm:"column(name)" json:"name" description:"名称昵称"`
 	Email      string     `orm:"column(email)" json:"email" description:"邮件"`
-	Number     int64      `orm:"column(number)" json:"number" description:"号码"`
+	Number     string     `orm:"column(number)" json:"number" description:"号码"`
 	Content    string     `orm:"column(content)" json:"content" description:"介绍"`
 	Status     int8       `orm:"column(status)" json:"status" description:"上线下线 0:离线 1:在线"`
 	Remarks    string     `orm:"column(remarks)" json:"remarks" description:"备注"`

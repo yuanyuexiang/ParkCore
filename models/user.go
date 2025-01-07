@@ -13,17 +13,16 @@ import (
 // 学术用户
 // User User
 type User struct {
-	ID         int64      `orm:"column(id);pk;auto" json:"id"`
-	Address    string     `orm:"column(address)" json:"address" description:"钱包地址"`
-	Name       string     `orm:"column(name)" json:"name" description:"名称昵称"`
-	Email      string     `orm:"column(email)" json:"email" description:"邮件"`
-	Number     string     `orm:"column(number)" json:"number" description:"号码"`
-	Content    string     `orm:"column(content)" json:"content" description:"介绍"`
-	Status     int8       `orm:"column(status)" json:"status" description:"上线下线 0:离线 1:在线"`
-	Remarks    string     `orm:"column(remarks)" json:"remarks" description:"备注"`
-	CreateTime time.Time  `orm:"column(create_time)" json:"create_time"`
-	UpdateTime time.Time  `orm:"column(update_time)" json:"update_time"`
-	Comments   []*Comment `orm:"reverse(many)" json:"comments,omitempty" description:"此人言论数组"`
+	ID         int64     `orm:"column(id);pk;auto" json:"id"`
+	Address    string    `orm:"column(address)" json:"address" description:"钱包地址"`
+	Name       string    `orm:"column(name)" json:"name" description:"名称昵称"`
+	Email      string    `orm:"column(email)" json:"email" description:"邮件"`
+	Number     string    `orm:"column(number)" json:"number" description:"号码"`
+	Content    string    `orm:"column(content)" json:"content" description:"介绍"`
+	Status     int8      `orm:"column(status)" json:"status" description:"上线下线 0:离线 1:在线"`
+	Remarks    string    `orm:"column(remarks)" json:"remarks" description:"备注"`
+	CreateTime time.Time `orm:"column(create_time)" json:"create_time"`
+	UpdateTime time.Time `orm:"column(update_time)" json:"update_time"`
 }
 
 func init() {
@@ -66,9 +65,6 @@ func GetUserByID(id int64) (v *User, err error) {
 		_, err = o.LoadRelated(v, "Comments")
 		if err != nil {
 			fmt.Println(err)
-		}
-		for _, m := range v.Comments {
-			m.User = nil
 		}
 		return v, nil
 	}

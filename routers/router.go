@@ -17,9 +17,6 @@ func init() {
 		beego.NSNamespace("/user",
 			beego.NSInclude(&controllers.UserController{}),
 		),
-		beego.NSNamespace("/comment",
-			beego.NSInclude(&controllers.CommentController{}),
-		),
 	)
 	beego.AddNamespace(ns)
 }

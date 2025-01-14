@@ -13,7 +13,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.service-park.entrypoints=websecure"
       - "traefik.http.routers.service-park.rule=Host(`park.matrix-net.tech`) && PathPrefix(`/park`)"
-      - "traefik.http.middlewares.camaro-stripprefix.stripprefix.prefixes=/park"
+      - "traefik.http.middlewares.park-stripprefix.stripprefix.prefixes=/park"
       - "traefik.http.routers.park.middlewares=park-stripprefix"
       - "traefik.http.routers.service-park.tls.certresolver=aliyunresolver"
       - "traefik.http.services.service-park.loadbalancer.server.port=8000"

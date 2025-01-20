@@ -8,6 +8,202 @@
     },
     "basePath": "/park/v1",
     "paths": {
+        "/parking-spot/": {
+            "get": {
+                "tags": [
+                    "parking-spot"
+                ],
+                "summary": "查询车位",
+                "description": "查询车位 http://127.0.0.1:8080/park/v1/parking-spot\n\u003cbr\u003e",
+                "operationId": "ParkingSpotController.查询车位",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "查询参数，用\u0026分隔",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "排序",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "升序asc，降序desc",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "限制个数，默认10",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "偏移，默认0",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "parking-spot"
+                ],
+                "summary": "绑定车位",
+                "description": "绑定车位\n\u003cbr\u003e",
+                "operationId": "ParkingSpotController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "车位结构体",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ParkingSpot"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "parking-spot"
+                ],
+                "summary": "批量删除车位",
+                "description": "批量删除车位\n\u003cbr\u003e",
+                "operationId": "ParkingSpotController.批量删除车位",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "只填id字段即可",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.ParkingSpot"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/parking-spot/{id}": {
+            "get": {
+                "tags": [
+                    "parking-spot"
+                ],
+                "summary": "获取车位",
+                "description": "获取车位根据ID\n\u003cbr\u003e",
+                "operationId": "ParkingSpotController.Get",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "车位ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "parking-spot"
+                ],
+                "summary": "更新车位",
+                "description": "更新车位\n\u003cbr\u003e",
+                "operationId": "ParkingSpotController.更新车位",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "车位ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "车位结构体内容",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ParkingSpot"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "parking-spot"
+                ],
+                "summary": "删除车位",
+                "description": "删除车位\n\u003cbr\u003e",
+                "operationId": "ParkingSpotController.删除车位",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "删除车位的ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.ResponseData"
+                        }
+                    }
+                }
+            }
+        },
         "/user/": {
             "get": {
                 "tags": [
@@ -114,24 +310,6 @@
                     },
                     "403": {
                         "description": "body is empty"
-                    }
-                }
-            }
-        },
-        "/user/test": {
-            "get": {
-                "tags": [
-                    "user"
-                ],
-                "summary": "测试",
-                "description": "测试接口，后端测试使用\n\u003cbr\u003e",
-                "operationId": "UserController.Get",
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/controllers.ResponseData"
-                        }
                     }
                 }
             }
@@ -295,6 +473,64 @@
                     "description": "数据类型",
                     "type": "integer",
                     "format": "int64"
+                }
+            }
+        },
+        "models.ParkingSpot": {
+            "title": "ParkingSpot",
+            "type": "object",
+            "properties": {
+                "address": {
+                    "description": "钱包地址",
+                    "type": "string"
+                },
+                "content": {
+                    "description": "介绍",
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "latitude": {
+                    "description": "纬度",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "longitude": {
+                    "description": "经度",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "description": "名称昵称",
+                    "type": "string"
+                },
+                "remarks": {
+                    "description": "备注",
+                    "type": "string"
+                },
+                "rent_price": {
+                    "description": "租金",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "renter": {
+                    "description": "租户地址",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "上线下线 0:离线 1:在线",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
                 }
             }
         },

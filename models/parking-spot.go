@@ -10,30 +10,32 @@ import (
 	"github.com/beego/beego/v2/client/orm"
 )
 
-// 用户
-// User User
-type User struct {
+// 车位
+// ParkingSpot ParkingSpot
+type ParkingSpot struct {
 	ID         int64     `orm:"column(id);pk;auto" json:"id"`
 	Address    string    `orm:"column(address)" json:"address" description:"钱包地址"`
 	Name       string    `orm:"column(name)" json:"name" description:"名称昵称"`
-	Email      string    `orm:"column(email)" json:"email" description:"邮件"`
-	Number     string    `orm:"column(number)" json:"number" description:"号码"`
-	Content    string    `orm:"column(content)" json:"content" description:"介绍"`
 	Status     int8      `orm:"column(status)" json:"status" description:"上线下线 0:离线 1:在线"`
+	Longitude  int64     `orm:"column(longitude)" json:"longitude" description:"经度"`
+	Latitude   int64     `orm:"column(latitude)" json:"latitude" description:"纬度"`
+	Renter     string    `orm:"column(renter)" json:"renter" description:"租户地址"`
+	RentPrice  int64     `orm:"column(rent_price)" json:"rent_price" description:"租金"`
+	Content    string    `orm:"column(content)" json:"content" description:"介绍"`
 	Remarks    string    `orm:"column(remarks)" json:"remarks" description:"备注"`
 	CreateTime time.Time `orm:"column(create_time)" json:"create_time"`
 	UpdateTime time.Time `orm:"column(update_time)" json:"update_time"`
 }
 
 func init() {
-	orm.RegisterModel(new(User))
+	orm.RegisterModel(new(ParkingSpot))
 }
 
-// AddUser insert a new User into database and returns
+// AddParkingSpot insert a new ParkingSpot into database and returns
 // last inserted ID on success.
-func AddUser(m *User) (id int64, err error) {
+func AddParkingSpot(m *ParkingSpot) (id int64, err error) {
 	o := orm.NewOrm()
-	v := &User{Name: m.Name}
+	v := &ParkingSpot{Name: m.Name}
 	if err = o.Read(v, "Name"); err == nil {
 		return 0, errors.New("已经存在这个用户")
 	}
@@ -45,22 +47,22 @@ func AddUser(m *User) (id int64, err error) {
 	return
 }
 
-// GetUserByNumber retrieves User by number. Returns error if
+// GetParkingSpotByNumber retrieves ParkingSpot by number. Returns error if
 // number doesn't exist
-func GetUserByName(name string) (v *User, err error) {
+func GetParkingSpotByName(name string) (v *ParkingSpot, err error) {
 	o := orm.NewOrm()
-	v = &User{Name: name}
+	v = &ParkingSpot{Name: name}
 	if err = o.Read(v, "Name"); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetUserByID retrieves User by ID. Returns error if
+// GetParkingSpotByID retrieves ParkingSpot by ID. Returns error if
 // ID doesn't exist
-func GetUserByID(id int64) (v *User, err error) {
+func GetParkingSpotByID(id int64) (v *ParkingSpot, err error) {
 	o := orm.NewOrm()
-	v = &User{ID: id}
+	v = &ParkingSpot{ID: id}
 	if err = o.Read(v); err == nil {
 		_, err = o.LoadRelated(v, "Comments")
 		if err != nil {
@@ -71,12 +73,12 @@ func GetUserByID(id int64) (v *User, err error) {
 	return nil, err
 }
 
-// GetAllUserX retrieves all User matches certain condition. Returns empty list if
+// GetAllParkingSpotX retrieves all ParkingSpot matches certain condition. Returns empty list if
 // no records exist
-func GetAllUser(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllParkingSpot(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (m map[string]interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(User))
+	qs := o.QueryTable(new(ParkingSpot))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -122,7 +124,7 @@ func GetAllUser(query map[string]string, fields []string, sortby []string, order
 		}
 	}
 
-	var l []User
+	var l []ParkingSpot
 	qs = qs.OrderBy(sortFields...)
 	if _, err := qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if count, err := qs.Count(); err == nil {
@@ -134,7 +136,7 @@ func GetAllUser(query map[string]string, fields []string, sortby []string, order
 					// 	fmt.Println(err)
 					// }
 					// for _, m := range v.Comments {
-					// 	m.User = nil
+					// 	m.ParkingSpot = nil
 					// }
 					ml = append(ml, v)
 				}
@@ -161,12 +163,12 @@ func GetAllUser(query map[string]string, fields []string, sortby []string, order
 	return nil, err
 }
 
-// GetAllUserList retrieves all User matches certain condition. Returns empty list if
+// GetAllParkingSpotList retrieves all ParkingSpot matches certain condition. Returns empty list if
 // no records exist
-func GetAllUserList(query map[string]string, fields []string, sortby []string, order []string,
-	offset int64, limit int64) (list []User, err error) {
+func GetAllParkingSpotList(query map[string]string, fields []string, sortby []string, order []string,
+	offset int64, limit int64) (list []ParkingSpot, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(User))
+	qs := o.QueryTable(new(ParkingSpot))
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -212,7 +214,7 @@ func GetAllUserList(query map[string]string, fields []string, sortby []string, o
 		}
 	}
 
-	var l []User
+	var l []ParkingSpot
 	qs = qs.OrderBy(sortFields...)
 	if _, err := qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -235,11 +237,11 @@ func GetAllUserList(query map[string]string, fields []string, sortby []string, o
 	return nil, err
 }
 
-// UpdateUserByID updates User by ID and returns error if
+// UpdateParkingSpotByID updates ParkingSpot by ID and returns error if
 // the record to be updated doesn't exist
-func UpdateUserByID(m *User) (err error) {
+func UpdateParkingSpotByID(m *ParkingSpot) (err error) {
 	o := orm.NewOrm()
-	v := User{ID: m.ID}
+	v := ParkingSpot{ID: m.ID}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		m.UpdateTime = time.Now()
@@ -253,11 +255,11 @@ func UpdateUserByID(m *User) (err error) {
 	return
 }
 
-// UpdateUserStatusByID updates User by ID and returns error if
+// UpdateParkingSpotStatusByID updates ParkingSpot by ID and returns error if
 // the record to be updated doesn't exist
-func UpdateUserStatusByNumber(m *User) (v User, err error) {
+func UpdateParkingSpotStatusByNumber(m *ParkingSpot) (v ParkingSpot, err error) {
 	o := orm.NewOrm()
-	v = User{Name: m.Name}
+	v = ParkingSpot{Name: m.Name}
 	// ascertain id exists in the database
 	if err = o.Read(&v, "Number"); err == nil {
 		v.UpdateTime = time.Now()
@@ -271,24 +273,24 @@ func UpdateUserStatusByNumber(m *User) (v User, err error) {
 	return
 }
 
-// DeleteUser deletes User by ID and returns error if
+// DeleteParkingSpot deletes ParkingSpot by ID and returns error if
 // the record to be deleted doesn't exist
-func DeleteUser(id int64) (err error) {
+func DeleteParkingSpot(id int64) (err error) {
 	o := orm.NewOrm()
-	v := User{ID: id}
+	v := ParkingSpot{ID: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&User{ID: id}); err == nil {
+		if num, err = o.Delete(&ParkingSpot{ID: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
 	return
 }
 
-// DeleteAllUser deletes all User
-func DeleteAllUser() (num int64, err error) {
+// DeleteAllParkingSpot deletes all ParkingSpot
+func DeleteAllParkingSpot() (num int64, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(User))
+	qs := o.QueryTable(new(ParkingSpot))
 	return qs.Filter("id__gt", 0).Delete()
 }

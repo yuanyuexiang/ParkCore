@@ -8,28 +8,28 @@ import (
 	"strings"
 )
 
-type UserController struct {
+type ParkingSpotController struct {
 	BaseController
 }
 
 // GetOne GetOne
 // @Title Get
-// @Summary 获取用户
-// @Description 获取用户根据ID
-// @Param	id		path 	string	true		"用户ID"
+// @Summary 获取车位
+// @Description 获取车位根据ID
+// @Param	id		path 	string	true		"车位ID"
 // @Success 200 {object} controllers.ResponseData
 // @router /:id [get]
-func (c *UserController) GetOne() {
+func (c *ParkingSpotController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.ParseInt(idStr, 0, 64)
-	v, err := models.GetUserByID(id)
+	v, err := models.GetParkingSpotByID(id)
 	c.DoReturn(v, err)
 }
 
 // GetAll GetAll
-// @Title 查询用户
-// @Summary 查询用户
-// @Description 查询用户 http://127.0.0.1:8080/park/v1/user
+// @Title 查询车位
+// @Summary 查询车位
+// @Description 查询车位 http://127.0.0.1:8080/park/v1/parking-spot
 // @Param	query	query	string	false	"查询参数，用&分隔"
 // @Param	sortby	query	string	false	"排序"
 // @Param	order	query	string	false	"升序asc，降序desc"
@@ -37,7 +37,7 @@ func (c *UserController) GetOne() {
 // @Param	offset	query	string	false	"偏移，默认0"
 // @Success 200 {object} controllers.ResponseData
 // @router / [get]
-func (c *UserController) GetAll() {
+func (c *ParkingSpotController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -78,69 +78,69 @@ func (c *UserController) GetAll() {
 			query[k] = v
 		}
 	}
-	l, err := models.GetAllUser(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllParkingSpot(query, fields, sortby, order, offset, limit)
 	c.DoReturn(l, err)
 }
 
 // Post Post
 // @Title Post
-// @Summary 绑定用户
-// @Description 绑定用户
-// @Param	body		body 	models.User	true		"用户结构体"
+// @Summary 绑定车位
+// @Description 绑定车位
+// @Param	body		body 	models.ParkingSpot	true		"车位结构体"
 // @Success 200 {object} controllers.ResponseData
 // @router / [post]
-func (c *UserController) Post() {
-	var v models.User
+func (c *ParkingSpotController) Post() {
+	var v models.ParkingSpot
 	json.Unmarshal(c.Ctx.Input.RequestBody, &v)
-	id, err := models.AddUser(&v)
+	id, err := models.AddParkingSpot(&v)
 	c.DoReturn(id, err)
 }
 
 // Put Put
-// @Title 更新用户
-// @Summary 更新用户
-// @Description 更新用户
-// @Param	id		path 	string			true		"用户ID"
-// @Param	body	body 	models.User	true		"用户结构体内容"
+// @Title 更新车位
+// @Summary 更新车位
+// @Description 更新车位
+// @Param	id		path 	string			true		"车位ID"
+// @Param	body	body 	models.ParkingSpot	true		"车位结构体内容"
 // @Success 200 {object} controllers.ResponseData
 // @router /:id [put]
-func (c *UserController) Put() {
+func (c *ParkingSpotController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.ParseInt(idStr, 0, 64)
-	v := models.User{ID: id}
+	v := models.ParkingSpot{ID: id}
 	json.Unmarshal(c.Ctx.Input.RequestBody, &v)
 
-	err := models.UpdateUserByID(&v)
+	err := models.UpdateParkingSpotByID(&v)
 	c.DoReturn(nil, err)
 }
 
 // DeleteList DeleteList
-// @Title 批量删除用户
-// @Summary 批量删除用户
-// @Description 批量删除用户
-// @Param	body		body 	[]models.User	true		"只填id字段即可"
+// @Title 批量删除车位
+// @Summary 批量删除车位
+// @Description 批量删除车位
+// @Param	body		body 	[]models.ParkingSpot	true		"只填id字段即可"
 // @Success 201 {object} controllers.ResponseData
 // @Failure 403 body is empty
 // @router / [delete]
-func (c *UserController) DeleteList() {
-	var v []models.User
+func (c *ParkingSpotController) DeleteList() {
+	var v []models.ParkingSpot
 	err := json.Unmarshal(c.Ctx.Input.RequestBody, &v)
-	for _, user := range v {
-		err = models.DeleteUser(user.ID)
+	for _, parking_spot := range v {
+		err = models.DeleteParkingSpot(parking_spot.ID)
 	}
 	c.DoReturn(nil, err)
 }
 
 // Delete Delete
-// @Title 删除用户
-// @Summary 删除用户
-// @Description 删除用户
-// @Param	id		path 	string	true		"删除用户的ID"
+// @Title 删除车位
+// @Summary 删除车位
+// @Description 删除车位
+// @Param	id		path 	string	true		"删除车位的ID"
 // @Success 200 {object} controllers.ResponseData
 // @router /:id [delete]
-func (c *UserController) Delete() {
+func (c *ParkingSpotController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.ParseInt(idStr, 0, 64)
-	err := models.DeleteUser(id)
+	err := models.DeleteParkingSpot(id)
 	c.DoReturn(nil, err)
 }

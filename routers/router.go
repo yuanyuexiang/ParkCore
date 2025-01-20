@@ -17,6 +17,9 @@ func init() {
 		beego.NSNamespace("/user",
 			beego.NSInclude(&controllers.UserController{}),
 		),
+		beego.NSNamespace("/parking-spot",
+			beego.NSInclude(&controllers.ParkingSpotController{}),
+		),
 	)
 	beego.AddNamespace(ns)
 }

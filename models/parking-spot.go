@@ -17,8 +17,8 @@ type ParkingSpot struct {
 	Address    string    `orm:"column(address)" json:"address" description:"钱包地址"`
 	Name       string    `orm:"column(name)" json:"name" description:"名称昵称"`
 	Status     int8      `orm:"column(status)" json:"status" description:"上线下线 0:离线 1:在线"`
-	Longitude  int64     `orm:"column(longitude)" json:"longitude" description:"经度"`
-	Latitude   int64     `orm:"column(latitude)" json:"latitude" description:"纬度"`
+	Longitude  float64   `orm:"column(longitude)" json:"longitude" description:"经度"`
+	Latitude   float64   `orm:"column(latitude)" json:"latitude" description:"纬度"`
 	Renter     string    `orm:"column(renter)" json:"renter" description:"租户地址"`
 	RentPrice  int64     `orm:"column(rent_price)" json:"rent_price" description:"租金"`
 	Content    string    `orm:"column(content)" json:"content" description:"介绍"`

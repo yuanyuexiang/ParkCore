@@ -35,7 +35,7 @@ func init() {
 // last inserted ID on success.
 func AddParkingSpot(m *ParkingSpot) (v *ParkingSpot, err error) {
 	o := orm.NewOrm()
-	v = &ParkingSpot{Name: m.Name}
+	v = &ParkingSpot{Name: m.Name, Address: m.Address}
 	if err := o.Read(v, "Name", "Address"); err == nil {
 		return nil, errors.New("已经存在这个用户")
 	}

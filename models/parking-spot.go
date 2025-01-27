@@ -33,17 +33,17 @@ func init() {
 
 // AddParkingSpot insert a new ParkingSpot into database and returns
 // last inserted ID on success.
-func AddParkingSpot(m *ParkingSpot) (id int64, err error) {
+func AddParkingSpot(m *ParkingSpot) (v *ParkingSpot, err error) {
 	o := orm.NewOrm()
-	v := &ParkingSpot{Name: m.Name}
-	if err = o.Read(v, "Name"); err == nil {
-		return 0, errors.New("已经存在这个用户")
+	v = &ParkingSpot{Name: m.Name}
+	if err := o.Read(v, "Name", "Address"); err == nil {
+		return nil, errors.New("已经存在这个用户")
 	}
 	m.CreateTime = time.Now()
 	m.UpdateTime = time.Now()
-	id, err = o.Insert(m)
-
-	// 创建模板 测试使用
+	if _, err = o.Insert(m); err == nil {
+		v = m
+	}
 	return
 }
 

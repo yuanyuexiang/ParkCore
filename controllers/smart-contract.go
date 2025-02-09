@@ -75,5 +75,5 @@ func (c *SmartContractController) GetTest() {
 	// }
 	// log.Println("Listening for events...")
 	*/
-	c.DoReturn(nil, nil)
+	c.DoReturn(spots, err)
 }

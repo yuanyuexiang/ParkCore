@@ -61,6 +61,15 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["park/controllers:SmartContractController"] = append(beego.GlobalControllerRouter["park/controllers:SmartContractController"],
+        beego.ControllerComments{
+            Method: "GetTest",
+            Router: `/test`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["park/controllers:UserController"] = append(beego.GlobalControllerRouter["park/controllers:UserController"],
         beego.ControllerComments{
             Method: "GetAll",
